@@ -5,3 +5,90 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+.header-white-bold {
+    color: white;
+    font-weight: bold;
+}
+
+.glyphicon-to-right {
+    color: white;
+    float: right;
+    margin: 0 auto;
+    padding: 12px;
+    line-height: 28px;
+}
+
+.glyphicon-to-left {
+    color: white;
+    float: left;
+    margin: 0 auto;
+    padding: 12px;
+    line-height: 28px;
+}
+
+.color-gray {
+    color: gray;
+}
+
+.color-primary {
+    color: 	#428bca;
+}
+
+.color-black {
+    color : black;
+}
+
+
+form {
+    margin-top: 30px;
+}
+
+.narbar-adjust-toLeft {
+    padding-left: 0;
+    margin-left: -10px
+}
+
+#web-lists {
+    margin-left: 3%;
+    margin-top: 50px;
+    font-size: medium;
+    color: 	#428bca;
+}
+
+#web-lists > ul > li {
+    margin: 20px;
+}
+
+
+#web-lists > ul > li > span {
+    margin-top: 5px;
+    margin-right: 3%;
+    float: right;
+}
+
+#website-description {
+    text-align: start;
+    height: 120px;;
+}
+
+#new-website-form {
+    margin-left: 15px;
+    width: 90%;
+}
+
+#new-page-form {
+    margin-left: 15px;
+    width: 90%;
+}
+
+#widget-form {
+    margin: 20px;
+    padding-top: 15px;
+}
+
+
+.session-divider {
+    border-left: 1px solid grey;
+    height: 100vh;
+}
