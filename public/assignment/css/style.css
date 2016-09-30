@@ -61,7 +61,7 @@ form {
 }
 
 
-#web-lists > ul > li > span {
+#web-lists > ul > li > a > span {
     margin-top: 5px;
     margin-right: 3%;
     float: right;
