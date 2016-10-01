@@ -92,3 +92,35 @@ form {
     border-left: 1px solid grey;
     height: 100vh;
 }
+
+/*test*/
+
+#title {
+    padding-top: 0;
+    margin: 0;
+}
+
+.container-margin-top-bottom {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.relative-position {
+    position: relative;
+}
+.absolute-position {
+    position: absolute;
+}
+.list-element-menu {
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+}
+.zero-right-padding {
+    padding-right: 0;
+}
+
+.list-bottom-margin {
+    margin-bottom: 10px;
+}
