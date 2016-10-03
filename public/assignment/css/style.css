@@ -89,7 +89,7 @@ form {
 
 
 .session-divider {
-    border-left: 1px solid grey;
+    border-left: 1px solid lightgray;
     height: 100vh;
 }
 
@@ -123,4 +123,8 @@ form {
 
 .list-bottom-margin {
     margin-bottom: 10px;
+}
+
+a:hover {
+    text-decoration: none;
 }
