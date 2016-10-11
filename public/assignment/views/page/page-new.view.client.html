@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page New</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
         <div class="col-md-4 col-sm-4">
-        <a href="page-list.html" class="glyphicon-to-left color-black narbar-adjust-toLeft">
+        <a href="/user/:uid/website/:wid/page" class="glyphicon-to-left color-black narbar-adjust-toLeft">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
         </a>
@@ -22,7 +13,7 @@
             </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#">New Page</a>
-            <a href="page-list.html" class="glyphicon-to-right color-black">
+            <a href="/user/:uid/website/:wid/page" class="glyphicon-to-right color-black">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -37,31 +28,31 @@
         <ul class="list-unstyled">
             <li>
                 Blog Post
-                <a href="page-edit.html">
+                <a href="#/user/:uid/website/:wid/page/:pid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 Blogs
-                <a href="page-edit.html">
+                <a href="#/user/:uid/website/:wid/page/:pid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 Home
-                <a href="page-edit.html">
+                <a href="#/user/:uid/website/:wid/page/:pid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 About
-                <a href="page-edit.html">
+                <a href="#/user/:uid/website/:wid/page/:pid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 Contact Us
-                <a href="page-edit.html">
+                <a href="#/user/:uid/website/:wid/page/:pid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
@@ -72,14 +63,14 @@
     <form id="new-page-form">
         <div class="form-group">
             <label for="page-name">Name</label>
-            <input id="page-name"
+            <input ng-model="model.page.name" id="page-name"
                    type="text"
                    placeholder="Name"
                    class="form-control"/>
         </div>
         <div class="form-group">
             <label for="page-title">Title</label>
-            <input id="page-title"
+            <input ng-model="model.page.title" id="page-title"
                       type="text"
                       placeholder="Page Title"
                       class="form-control"/>
@@ -90,12 +81,9 @@
 
 <nav class="navbar navbar-fixed-bottom navbar-default">
     <div class="container-fluid">
-        <a class="glyphicon-to-right" href="profile.html">
+        <a class="glyphicon-to-right" href="#/user/:uid">
             <span class="glyphicon glyphicon-user color-primary"></span>
         </a >
 
     </div>
 </nav>
-
-</body>
-</html>

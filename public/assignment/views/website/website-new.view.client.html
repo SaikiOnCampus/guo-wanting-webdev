@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Website</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 
 <nav class="navbar navbar-fixed-top navbar-light bg-primary">
     <div class="container-fluid">
         <div class="col-md-4 col-sm-4 sidebar">
-            <a href="website-list.html" class="glyphicon-to-left narbar-adjust-toLeft">
+            <a href="#/user/:uid/website" class="glyphicon-to-left narbar-adjust-toLeft">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
             </a>
@@ -23,7 +14,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#">New Website</a>
-            <a href="website-list.html" class="glyphicon-to-right">
+            <a href="#/user/:uid/website" class="glyphicon-to-right">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -36,24 +27,24 @@
         <ul class="list-unstyled">
             <li>
                 Address Book App
-                <a href="website-edit.html">
+                <a href="#/user/:uid/website/:wid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 Blogger
-                <a href="website-edit.html">
+                <a href="#/user/:uid/website/:wid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             <li>
                 Blogging App
-                <a href="website-edit.html">
+                <a href="#/user/:uid/website/:wid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>            </li>
             <li>
                 Script Testing App
-                <a href="website-edit.html">
+                <a href="#/user/:uid/website/:wid">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>            </li>
         </ul>
@@ -63,13 +54,14 @@
     <form id="new-website-form">
         <div class="form-group">
             <label for="website-name">Name</label>
-            <input id="website-name"
+            <input ng-model="model.website.name" id="website-name"
                    type="text"
                    placeholder="Name"
                    class="form-control"/>
         </div>
         <div class="form-group">
             <label for="website-description">Description</label>
+            <!--Todo ng-model-->
             <textarea id="website-description"
                    type="text"
                    placeholder="Description"
@@ -80,12 +72,9 @@
 </div>
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
-        <a class="glyphicon-to-right" href="profile.html">
+        <a class="glyphicon-to-right" href="#/user/:uid">
             <span class="glyphicon glyphicon-user"></span>
         </a >
 
     </div>
 </nav>
-
-</body>
-</html>
