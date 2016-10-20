@@ -1,12 +1,12 @@
 
 <nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
-        <a href="../page/page-list.view.client.html" class="glyphicon-to-left color-black">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="glyphicon-to-left color-black">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
         </a>
         <a class="navbar-header navbar-brand header-white-bold" href="#">Widgets</a>
-        <a href="widget-chooser.view.client.html" class="glyphicon-to-right color-black">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="glyphicon-to-right color-black">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>
@@ -21,7 +21,7 @@
         <a class="glyphicon-to-left" href="#">
             <span class="glyphicon glyphicon-eye-open color-black"></span>
         </a>
-        <a class="glyphicon-to-right" href="../user/profile.view.client.html">
+        <a class="glyphicon-to-right" href="#/user/{{model.userId}}">
             <span class="glyphicon glyphicon-user color-primary"></span>
         </a >
 
@@ -30,53 +30,79 @@
 
 <div class="container-fluid container-margin-top-bottom">
     <ul class="list-unstyled">
-        <li class="list-bottom-margin">
-            <div class="relative-position">
-                <div class="container-fluid zero-right-padding">
-                    <h1 id="title">'Inferno Dragon' Is the Next 'Clash Royale' Legendary</h1>
-                </div>
-                <div class="absolute-position list-element-menu zero-right-padding">
-                    <a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                </div>
-            </div>
-        </li>
-        <li class="list-bottom-margin">
-            <div class="relative-position">
-                <div class="container-fluid zero-right-padding">
-                    <p>
-                        As promised, Supercell has revealed the next card to come to Clash Royale as part of the latest update, and its the Inferno Dragon. As you can see in the videos below, the Inferno Dragon works a lot like the Inferno Tower (but with a shorter range) in that as time passes, its attack gets stronger. In the first two seconds of its attack, it deals 75 dps, the next 2 seconds it deals 250 dps, and then it reaches its maximum of 875 dps. So, if you ignore this one and don't take it out as soon as possible, you are gonna get some serious damage. The positive is that it's easily distracted by small units, so make sure you have some ready to go. It's also relatively fragile and quite slow.
-                    </p>
-                </div>
-                <div class="absolute-position list-element-menu zero-right-padding">
-                    <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                </div>
-            </div>
-        </li>
-        <li class="list-bottom-margin">
-            <div class="relative-position">
-                <div class="container-fluid zero-right-padding">
-                    <img class="img-responsive" src="https://i.ytimg.com/vi/skHbLHkS5LE/hqdefault.jpg" alt="Clash Royale"/>
-                </div>
-                <div class="absolute-position list-element-menu zero-right-padding">
-                    <a href="widget-image.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                </div>
-            </div>
-        </li>
-        <li class="list-bottom-margin">
-            <div class="relative-position">
-                <div class="container-fluid zero-right-padding">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cPtsNKmdTr0"></iframe>
+        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+            <li class="list-bottom-margin">
+                <div class="relative-position">
+                    <div class="absolute-position list-element-menu zero-right-padding">
+                        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"><span class="glyphicon glyphicon-cog"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                    </div>
+                    <div ng-switch="widget.size" ng-switch-when="HEADER" class="container-fluid zero-right-padding">
+                        <h1 ng-switch-when="1" class="header-title">{{widget.text}}</h1>
+                        <h2 ng-switch-when="2" class="header-title">{{widget.text}}</h2>
+                        <h3 ng-switch-when="3" class="header-title">{{widget.text}}</h3>
+                        <h4 ng-switch-when="4" class="header-title">{{widget.text}}</h4>
+                        <h5 ng-switch-when="5" class="header-title">{{widget.text}}</h5>
+                        <h6 ng-switch-when="6" class="header-title">{{widget.text}}</h6>
+                    </div>
+                    <div ng-switch-when="IMAGE" class="container-fluid zero-right-padding">
+                        <img class="img-responsive" ng-src="{{model.checkSafeIMAGE(widget.url)}}"/>
+                    </div>
+                    <div ng-switch-when="YOUTUBE" class="container-fluid zero-right-padding">
+                        <iframe width="560" height="315" ng-src="{{model.checkSafeYOUTUBE(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHTML(widget.text)" class="container-fluid zero-right-padding">
                     </div>
                 </div>
-                <div class="absolute-position list-element-menu zero-right-padding">
-                    <a href="widget-youtube.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                </div>
-            </div>
-        </li>
+            </li>
+        </div>
+        <!--<li class="list-bottom-margin">-->
+            <!--<div class="relative-position">-->
+                <!--<div class="container-fluid zero-right-padding">-->
+                    <!--<h1 id="title">'Inferno Dragon' Is the Next 'Clash Royale' Legendary</h1>-->
+                <!--</div>-->
+                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
+                    <!--<a href="widget-header.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+        <!--<li class="list-bottom-margin">-->
+            <!--<div class="relative-position">-->
+                <!--<div class="container-fluid zero-right-padding">-->
+                    <!--<p>-->
+                        <!--As promised, Supercell has revealed the next card to come to Clash Royale as part of the latest update, and its the Inferno Dragon. As you can see in the videos below, the Inferno Dragon works a lot like the Inferno Tower (but with a shorter range) in that as time passes, its attack gets stronger. In the first two seconds of its attack, it deals 75 dps, the next 2 seconds it deals 250 dps, and then it reaches its maximum of 875 dps. So, if you ignore this one and don't take it out as soon as possible, you are gonna get some serious damage. The positive is that it's easily distracted by small units, so make sure you have some ready to go. It's also relatively fragile and quite slow.-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
+                    <!--<a href="#"><span class="glyphicon glyphicon-cog"></span></a>-->
+                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+        <!--<li class="list-bottom-margin">-->
+            <!--<div class="relative-position">-->
+                <!--<div class="container-fluid zero-right-padding">-->
+                    <!--<img class="img-responsive" src="https://i.ytimg.com/vi/skHbLHkS5LE/hqdefault.jpg" alt="Clash Royale"/>-->
+                <!--</div>-->
+                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
+                    <!--<a href="widget-image.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+        <!--<li class="list-bottom-margin">-->
+            <!--<div class="relative-position">-->
+                <!--<div class="container-fluid zero-right-padding">-->
+                    <!--<div class="embed-responsive embed-responsive-16by9">-->
+                        <!--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cPtsNKmdTr0"></iframe>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
+                    <!--<a href="widget-youtube.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
     </ul>
 </div>

@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container-fluid">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="glyphicon-to-left color-black">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+        </a>
+        <a class="navbar-header navbar-brand header-white-bold" href="#">Widget Edit</a>
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="glyphicon-to-right color-black">
+            <span class="glyphicon glyphicon-ok"></span>
+        </a>
+    </div>
+
+</nav>
+<nav class="navbar navbar-fixed-bottom navbar-default">
+    <div class="container-fluid">
+        <a class="glyphicon-to-right" href="#/user/{{model.userId}}">
+            <span class="glyphicon glyphicon-user color-primary"></span>
+        </a >
+
+    </div>
+</nav>
+
+<div>
+    <form ng-switch="model.widget.widgetType" id="widget-form">
+        <div ng-switch-when="HEADER">
+            <ng-include src="'views/widget/widget-' + model.widget.widgetType + '.view.client.html'"/>
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <ng-include src="'views/widget/widget-' + model.widget.widgetType + '.view.client.html'"/>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src="'views/widget/widget-' + model.widget.widgetType + '.view.client.html'"/>
+        </div>
+    </form>
+</div>

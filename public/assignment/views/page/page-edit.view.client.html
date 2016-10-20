@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
         <div class="col-md-4 col-sm-4">
-        <a href="#/user/:uid/website/:wid/page" class="glyphicon-to-left color-black narbar-adjust-toLeft">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="glyphicon-to-left color-black narbar-adjust-toLeft">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
         </a>
@@ -12,7 +12,7 @@
             </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#">Edit Page</a>
-            <a href="#/user/:uid/website/:wid/page" class="glyphicon-to-right color-black">
+            <a href="#/user/{{model.userid}}/website/{{model.websiteId}}/page" class="glyphicon-to-right color-black">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -25,36 +25,14 @@
     <div class="col-md-4 col-sm-4 hidden-xs">
     <div id="web-lists">
         <ul class="list-unstyled">
-            <li>
-                Blog Post
-                <a href="#/user/:uid/website/:wid/page/:pid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                Blogs
-                <a href="#/user/:uid/website/:wid/page/:pid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                Home
-                <a href="#/user/:uid/website/:wid/page/:pid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                About
-                <a href="#/user/:uid/website/:wid/page/:pid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                Contact Us
-                <a href="#/user/:uid/website/:wid/page/:pid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
+            <div ng-repeat="page in model.pages">
+                <li>
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </li>
+            </div>
         </ul>
     </div>
 </div>

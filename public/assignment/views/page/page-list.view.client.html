@@ -1,12 +1,12 @@
 
 <nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
-            <a href="../website/website-list.view.client.html" class="glyphicon-to-left color-black">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/" class="glyphicon-to-left color-black">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
             </a>
             <a class="navbar-header navbar-brand header-white-bold" href="#">Pages</a>
-            <a href="page-new.view.client.html" class="glyphicon-to-right color-black">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="glyphicon-to-right color-black">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
     </div>
@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-fixed-bottom navbar-default">
     <div class="container-fluid">
-        <a class="glyphicon-to-right" href="#/user/:uid">
+        <a class="glyphicon-to-right" href="#/user/{{model.userId}}">
             <span class="glyphicon glyphicon-user color-primary"></span>
         </a >
 
@@ -24,31 +24,39 @@
 <div>
     <div id="web-lists">
         <ul class="list-unstyled">
-            <li>
-                <a href="#/user/:uid/website/:wid/page/:pid/widget">Blog Post</a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>            </li>
-            <li>
-                <a href="#/user/:uid/website/:wid/page/:pid/widget">Blogs</a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>             </li>
-            <li>
-                <a href="#/user/:uid/website/:wid/page/:pid/widget">Home</a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>             </li>
-            <li>
-                <a href="#/user/:uid/website/:wid/page/:pid/widget">About</a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>             </li>
-            <li>
-                <a href="#/user/:uid/website/:wid/page/:pid/widget">Contact Us</a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>             </li>
+            <div ng-repeat="page in model.pages">
+                <li>
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </li>
+            </div>
+            <!--<li>-->
+                <!--<a href="#/user/:uid/website/:wid/page/:pid/widget">Blog Post</a>-->
+                <!--<a href="page-edit.view.client.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>            </li>-->
+            <!--<li>-->
+                <!--<a href="#/user/:uid/website/:wid/page/:pid/widget">Blogs</a>-->
+                <!--<a href="page-edit.view.client.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>             </li>-->
+            <!--<li>-->
+                <!--<a href="#/user/:uid/website/:wid/page/:pid/widget">Home</a>-->
+                <!--<a href="page-edit.view.client.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>             </li>-->
+            <!--<li>-->
+                <!--<a href="#/user/:uid/website/:wid/page/:pid/widget">About</a>-->
+                <!--<a href="page-edit.view.client.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>             </li>-->
+            <!--<li>-->
+                <!--<a href="#/user/:uid/website/:wid/page/:pid/widget">Contact Us</a>-->
+                <!--<a href="page-edit.view.client.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>             </li>-->
         </ul>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-fixed-top navbar-light bg-primary">
     <div class="container-fluid">
             <a class="navbar-header navbar-brand header-white-bold" href="#">Profile</a>
-                <a href="#/profile" class="glyphicon-to-right">
+                <a href="#/user/{{model.user._id}}" class="glyphicon-to-right">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
     </div>
@@ -26,27 +26,27 @@
         </div>
         <div class="form-group">
             <label for="firstname">First Name</label>
-            <input ng-model="model.user.firstname" id="firstname"
+            <input ng-model="model.user.firstName" id="firstname"
                    type="text"
                    placeholder="Saiki"
                    class="form-control"/>
         </div>
         <div class="form-group">
             <label for="lastname">Last Name</label>
-            <input ng-model="model.user.lastname" id="lastname"
+            <input ng-model="model.user.lastName" id="lastname"
                    type="text"
                    placeholder="Kwok"
                    class="form-control"/>
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       href="#/user/:uid/website">Websites</a>
+       href="#/user/{{model.user._id}}/website">Websites</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
 </div>
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
-        <a class="glyphicon-to-right" href="/user/:uid">
+        <a class="glyphicon-to-right" href="#/user/{{model.user._id}}">
             <span class="glyphicon glyphicon-user"></span>
         </a >
 

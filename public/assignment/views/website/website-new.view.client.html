@@ -3,7 +3,7 @@
 <nav class="navbar navbar-fixed-top navbar-light bg-primary">
     <div class="container-fluid">
         <div class="col-md-4 col-sm-4 sidebar">
-            <a href="#/user/:uid/website" class="glyphicon-to-left narbar-adjust-toLeft">
+            <a href="#/user/{{model.userId}}/website" class="glyphicon-to-left narbar-adjust-toLeft">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
             </a>
@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#">New Website</a>
-            <a href="#/user/:uid/website" class="glyphicon-to-right">
+            <a href="#/user/{{model.userId}}/website" class="glyphicon-to-right">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -25,28 +25,14 @@
 <div class="col-md-4 col-sm-4 hidden-xs">
     <div id="web-lists">
         <ul class="list-unstyled">
-            <li>
-                Address Book App
-                <a href="#/user/:uid/website/:wid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                Blogger
-                <a href="#/user/:uid/website/:wid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li>
-                Blogging App
-                <a href="#/user/:uid/website/:wid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>            </li>
-            <li>
-                Script Testing App
-                <a href="#/user/:uid/website/:wid">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>            </li>
+            <div ng-repeat="website in model.websites">
+                <li>
+                    <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+                    <a href="#/user/{{model.userId}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </li>
+            </div>
         </ul>
     </div>
 </div>
@@ -61,18 +47,18 @@
         </div>
         <div class="form-group">
             <label for="website-description">Description</label>
-            <!--Todo ng-model-->
-            <textarea id="website-description"
+            <textarea ng-model="model.website.description" id="website-description"
                    type="text"
                    placeholder="Description"
                    class="form-control"></textarea>
         </div>
+        <a ng-click="model.addNewWebsite(model.website)" class="btn btn-primary  btn-block">Submit</a>
     </form>
 </div>
 </div>
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
-        <a class="glyphicon-to-right" href="#/user/:uid">
+        <a class="glyphicon-to-right" href="#/user/{{model.userId}}">
             <span class="glyphicon glyphicon-user"></span>
         </a >
 

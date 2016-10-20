@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Login</h1>
+    <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
     <input ng-model="model.user.username" placeholder="username"
            type="text"
            class="form-control"/>
@@ -7,8 +8,7 @@
            type="password"
            class="form-control"/>
 
-    <a class="btn btn-primary btn-block"
-       href="#/login">Login</a>
+    <a ng-click="model.login(model.user)" class="btn btn-primary btn-block">Login</a>
     <a class="btn btn-success btn-block"
        href="#/register">Register</a>
 
