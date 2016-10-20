@@ -34,7 +34,9 @@
             <li class="list-bottom-margin">
                 <div class="relative-position">
                     <div class="absolute-position list-element-menu zero-right-padding">
-                        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"><span class="glyphicon glyphicon-cog"></span></a>
+                        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
                         <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
                     </div>
                     <div ng-switch="widget.size" ng-switch-when="HEADER" class="container-fluid zero-right-padding">

@@ -22,7 +22,7 @@
     <div id="web-lists">
         <ul class="list-unstyled">
             <li>
-                <a href="widget-header.view.client.html">Header</a>
+                <a ng-click="model.toCreateNewWidget('HEADER')">Header</a>
             </li>
             <li>
                 Label
@@ -35,8 +35,8 @@
             </li>
             <li>Link</li>
             <li>Button</li>
-            <li><a href="widget-image.view.client.html">Image</a> </li>
-            <li><a href="widget-youtube.view.client.html">YouTube</a></li>
+            <li><a ng-click="model.toCreateNewWidget('IMAGE')">Image</a> </li>
+            <li><a ng-click="model.toCreateNewWidget('YOUTUBE')">YouTube</a></li>
             <li>Data Table</li>
             <li>Repeater</li>
         </ul>

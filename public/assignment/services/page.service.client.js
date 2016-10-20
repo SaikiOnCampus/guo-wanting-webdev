@@ -76,7 +76,7 @@
         function deletePage(pageId) {
             for (var i = 0; i < pages.length; i++) {
                 if (pages[i]._id === pageId) {
-                    pages.slice(i, 1);
+                    pages.splice(i, 1);
                     break;
                 }
             }
