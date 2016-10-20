@@ -49,7 +49,9 @@
                         <img class="img-responsive" ng-src="{{model.checkSafeIMAGE(widget.url)}}"/>
                     </div>
                     <div ng-switch-when="YOUTUBE" class="container-fluid zero-right-padding">
-                        <iframe width="560" height="315" ng-src="{{model.checkSafeYOUTUBE(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe ng-src="{{model.checkSafeYOUTUBE(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                     <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHTML(widget.text)" class="container-fluid zero-right-padding">
                     </div>
