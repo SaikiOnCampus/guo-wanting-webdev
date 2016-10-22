@@ -12,7 +12,7 @@
             </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#">Edit Page</a>
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="glyphicon-to-right color-black">
+            <a ng-click="model.updateThePage(model.page)" class="glyphicon-to-right color-black">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -52,7 +52,7 @@
                           placeholder="Page Title"
                           class="form-control"/>
             </div>
-            <a ng-click="model.updateThePage(model.page)" class="btn btn-success  btn-block">Update</a>
+            <!--<a ng-click="model.updateThePage(model.page)" class="btn btn-success  btn-block">Update</a>-->
             <a ng-click="model.deleteThePage()" class="btn btn-danger  btn-block">Delete</a>
         </form>
     </div>

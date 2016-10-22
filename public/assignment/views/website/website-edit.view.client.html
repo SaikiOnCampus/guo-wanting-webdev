@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
             <a class="navbar-header navbar-brand header-white-bold" href="#/user/:uid/website">Edit Website</a>
-            <a href="#/user/{{model.userId}}/website" class="glyphicon-to-right">
+            <a ng-click="model.updateWebsite(model.website)" class="glyphicon-to-right">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -71,7 +71,7 @@
                    placeholder="Description"
                    class="form-control"></textarea>
         </div>
-        <a ng-click="model.updateWebsite(model.website)" class="btn btn-primary  btn-block">Update</a>
+        <!--<a ng-click="model.updateWebsite(model.website)" class="btn btn-primary  btn-block">Update</a>-->
         <a ng-click="model.deleteWebsite()" class="btn btn-danger  btn-block">Delete</a>
     </form>
 </div>

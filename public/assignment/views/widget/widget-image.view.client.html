@@ -46,7 +46,7 @@
         <div class="form-group">
             <label for="widget-image-width">Width</label>
             <input ng-model="model.widget.width" id="widget-image-width"
-                   type="number"
+                   type="text"
                    placeholder="100%"
                    class="form-control"/>
         </div>
@@ -57,7 +57,7 @@
                    class="form-control"/>
         </div>
         <button class="btn btn-primary  btn-block" type="submit">Upload Image</button>
-        <a ng-click="model.updateTheWidget()" class="btn btn-success  btn-block">Update</a>
+        <!--<a ng-click="model.updateTheWidget(model.widget)" class="btn btn-success  btn-block">Update</a>-->
         <a ng-click="model.deleteTheWidget()" class="btn btn-danger  btn-block">Delete</a>
     <!--</form>-->
 <!--</div>-->

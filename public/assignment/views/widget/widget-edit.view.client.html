@@ -6,7 +6,7 @@
           </span>
         </a>
         <a class="navbar-header navbar-brand header-white-bold" href="#">Widget Edit</a>
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="glyphicon-to-right color-black">
+        <a ng-click="model.updateTheWidget(model.widget)" class="glyphicon-to-right color-black">
             <span class="glyphicon glyphicon-ok"></span>
         </a>
     </div>

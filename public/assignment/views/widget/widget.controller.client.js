@@ -60,22 +60,22 @@
         vm.userId = parseInt($routeParams['uid']);
         vm.websiteId = parseInt($routeParams['wid']);
         vm.pageId = parseInt($routeParams['pid']);
-        var widgetId = parseInt($routeParams['wgid']);
+        vm.widgetId = parseInt($routeParams['wgid']);
         vm.deleteTheWidget = deleteTheWidget;
         vm.updateTheWidget = updateTheWidget;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(widgetId)
+            vm.widget = angular.copy(WidgetService.findWidgetById(vm.widgetId));
         }
         init();
 
         function deleteTheWidget() {
-            WidgetService.deleteWidget(widgetId);
+            WidgetService.deleteWidget(vm.widgetId);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget")
         }
 
-        function updateTheWidget(widgetId, widget) {
-            WidgetService.updateWidget(widgetId, widget);
+        function updateTheWidget(widget) {
+            WidgetService.updateWidget(vm.widgetId, widget);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget")
         }
     }
