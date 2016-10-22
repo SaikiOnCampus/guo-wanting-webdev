@@ -38,8 +38,8 @@
         vm.deleteWebsite = deleteWebsite;
 
         function init() {
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            vm.website = angular.copy(WebsiteService.findWebsiteById(vm.websiteId));
+            vm.websites = angular.copy(WebsiteService.findWebsitesByUser(vm.userId));
         }
         init();
 
