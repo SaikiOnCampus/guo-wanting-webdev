@@ -8,12 +8,15 @@
         var vm = this;
         vm.login = login;
         function login(user) {
-            user = UserService.findUserByCredentials(user.username, user.password);
-            if (user) {
-                $location.url("/user/" + user._id);
-            } else {
-                vm.alert = "Unable to locate your credentials!";
-            }
+            var promise = UserService.findUserByCredentials(user.username, user.password);
+            promise.success(function (user) {
+                if (user != '0') {
+                    $location.url("/user/" + user._id);
+                } else {
+                    vm.alert = "Unable to locate your credentials!";
+                }
+            });
+
         }
     }
     
@@ -23,18 +26,22 @@
 
         function register() {
             if (vm.user.password != vm.verifyPassword) {
-                vm.alert = "Password doesn't match!"
+                vm.alert = "Password doesn't match!";
                 return;
             }
-            var user = UserService.findUserByUserName(vm.user.username);
-            if (user != null) {
-                vm.alert = "This username has been used!"
-            } else {
-                vm.user = UserService.createUser(vm.user);
-                $location.url("/user/" + vm.user._id);
-            }
-        }
+            UserService.findUserByUserName(vm.user.username).success(function (user) {
+                if (user != '0') {
+                    vm.alert = "This username has been used!";
+                } else {
+                    UserService.createUser(vm.user).success(function (user) {
+                        if (user != '0') {
+                            $location.url("/user/" + user._id);
+                        }
+                    });
+                }
+            });
 
+        }
 
     }
     
@@ -42,9 +49,24 @@
         var vm = this;
         var userId = parseInt($routeParams.uid);
         function init() {
-            vm.user = UserService.findUserById(userId);
+            var promise = UserService.findUserById(userId);
+            promise.success(function (user) {
+                if (user != '0') {
+                    vm.user = user;
+                }
+            })
         }
         init();
+
+        vm.updateProfile = updateProfile;
+
+        function updateProfile() {
+            UserService.updateUser(userId, vm.user).success(function (user) {
+                if (user != '0') {
+                    vm.user = user;
+                }
+            })
+        }
     }
     
 })();

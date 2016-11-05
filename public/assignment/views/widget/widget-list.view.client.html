@@ -30,7 +30,7 @@
 
 <div class="container-fluid container-margin-top-bottom">
     <ul class="list-unstyled">
-        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" class="wam-widget">
             <li class="list-bottom-margin">
                 <div class="relative-position">
                     <div class="absolute-position list-element-menu zero-right-padding">
@@ -48,6 +48,7 @@
                         <h6 ng-switch-when="6" class="header-title">{{widget.text}}</h6>
                     </div>
                     <div ng-switch-when="IMAGE" class="container-fluid zero-right-padding">
+                        {{model.checkSafeIMAGE(widget.url)}}
                         <img class="img-responsive" ng-src="{{model.checkSafeIMAGE(widget.url)}}"/>
                     </div>
                     <div ng-switch-when="YOUTUBE" class="container-fluid zero-right-padding">
