@@ -48,7 +48,7 @@ module.exports = function (app) {
             widgetType: widget.widgetType,
             pageId: widget.pageId,
             width: widget.width,
-            url: "/assignment/uploads" + photoname,
+            url: "/uploads" + photoname,
             canUpdate: true
         };
 
