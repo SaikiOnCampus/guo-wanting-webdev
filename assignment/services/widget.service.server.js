@@ -22,6 +22,14 @@ module.exports = function (app) {
     app.put('/api/widget/:widgetId', updateWidget);
     app.delete('/api/widget/:widgetId', deleteWidget);
     app.post('/api/upload', upload.single('myFile'), uploadImage);
+    app.put('/api/page/:pageId/widget/sort', sortWidgets);
+
+    function sortWidgets(req, res) {
+        var initial = req.query.initial;
+        var final = req.query.final;
+        widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
+        res.sendStatus(200);
+    }
 
     function uploadImage(req, res) {
         var userId = JSON.parse(req.body.userId);

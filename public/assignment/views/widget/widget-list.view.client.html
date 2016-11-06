@@ -29,7 +29,7 @@
 </nav>
 
 <div class="container-fluid container-margin-top-bottom">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled" jgasortable pageid="{{model.pageId}}">
         <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" class="wam-widget">
             <li class="list-bottom-margin">
                 <div class="relative-position">
@@ -60,53 +60,5 @@
                 </div>
             </li>
         </div>
-        <!--<li class="list-bottom-margin">-->
-            <!--<div class="relative-position">-->
-                <!--<div class="container-fluid zero-right-padding">-->
-                    <!--<h1 id="title">'Inferno Dragon' Is the Next 'Clash Royale' Legendary</h1>-->
-                <!--</div>-->
-                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
-                    <!--<a href="widget-header.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
-                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</li>-->
-        <!--<li class="list-bottom-margin">-->
-            <!--<div class="relative-position">-->
-                <!--<div class="container-fluid zero-right-padding">-->
-                    <!--<p>-->
-                        <!--As promised, Supercell has revealed the next card to come to Clash Royale as part of the latest update, and its the Inferno Dragon. As you can see in the videos below, the Inferno Dragon works a lot like the Inferno Tower (but with a shorter range) in that as time passes, its attack gets stronger. In the first two seconds of its attack, it deals 75 dps, the next 2 seconds it deals 250 dps, and then it reaches its maximum of 875 dps. So, if you ignore this one and don't take it out as soon as possible, you are gonna get some serious damage. The positive is that it's easily distracted by small units, so make sure you have some ready to go. It's also relatively fragile and quite slow.-->
-                    <!--</p>-->
-                <!--</div>-->
-                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
-                    <!--<a href="#"><span class="glyphicon glyphicon-cog"></span></a>-->
-                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</li>-->
-        <!--<li class="list-bottom-margin">-->
-            <!--<div class="relative-position">-->
-                <!--<div class="container-fluid zero-right-padding">-->
-                    <!--<img class="img-responsive" src="https://i.ytimg.com/vi/skHbLHkS5LE/hqdefault.jpg" alt="Clash Royale"/>-->
-                <!--</div>-->
-                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
-                    <!--<a href="widget-image.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
-                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</li>-->
-        <!--<li class="list-bottom-margin">-->
-            <!--<div class="relative-position">-->
-                <!--<div class="container-fluid zero-right-padding">-->
-                    <!--<div class="embed-responsive embed-responsive-16by9">-->
-                        <!--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cPtsNKmdTr0"></iframe>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="absolute-position list-element-menu zero-right-padding">-->
-                    <!--<a href="widget-youtube.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>-->
-                    <!--<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</li>-->
     </ul>
 </div>
