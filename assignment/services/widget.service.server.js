@@ -27,6 +27,7 @@ module.exports = function (app) {
     function sortWidgets(req, res) {
         var initial = req.query.initial;
         var final = req.query.final;
+        // Todo: save accoring to its actual order instead of single page order
         widgets.splice(final, 0, widgets.splice(initial, 1)[0]);
         res.sendStatus(200);
     }
@@ -36,6 +37,11 @@ module.exports = function (app) {
         var websiteId = JSON.parse(req.body.websiteId);
         var widget = JSON.parse(req.body.photo);
         var myFile = req.file;
+
+        if (typeof myFile == 'undefined') {
+            res.status(400).send({message: "No file selected!"});
+            return;
+        }
 
         var originalname = myFile.originalname;
         var filename = myFile.fieldname;
