@@ -21,16 +21,24 @@
     </div>
 </nav>
 
+<!--ng-if="model.widget.type"-->
 <div>
-    <form ng-switch="model.widget.widgetType" id="widget-form">
-        <div ng-switch-when="HEADER">
-            <ng-include src="'views/widget/widget-' + model.widget.widgetType.toLowerCase() + '.view.client.html'"/>
+    <form ng-switch="model.widget.type" id="widget-form">
+        <div ng-switch-when="HTML">
+            <ng-include src="'views/widget/widget-' + model.widget.type.toLowerCase() + '.view.client.html'"/>
         </div>
-        <div ng-switch-when="YOUTUBE">
-            <ng-include src="'views/widget/widget-' + model.widget.widgetType.toLowerCase() + '.view.client.html'"/>
+        <div ng-switch-when="HEADER">
+            <ng-include src="'views/widget/widget-' + model.widget.type.toLowerCase() + '.view.client.html'"/>
+        </div>
+        <div ng-switch-when="YOUTUBE" class="youtube-widget">
+            <ng-include src="'views/widget/widget-' + model.widget.type.toLowerCase() + '.view.client.html'"/>
         </div>
         <div ng-switch-when="IMAGE">
-            <ng-include src="'views/widget/widget-' + model.widget.widgetType.toLowerCase() + '.view.client.html'"/>
+            <ng-include src="'views/widget/widget-' + model.widget.type.toLowerCase() + '.view.client.html'"/>
         </div>
+        <div ng-switch-when="INPUT">
+            <ng-include src="'views/widget/widget-' + model.widget.type.toLowerCase() + '.view.client.html'"/>
+        </div>
+
     </form>
 </div>

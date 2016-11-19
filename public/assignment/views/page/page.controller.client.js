@@ -7,8 +7,8 @@
 
     function PageListController($routeParams, PageService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
         function init() {
             PageService.findPagesByWebsiteId(vm.websiteId).success(function (pages) {
                 vm.pages = pages;
@@ -19,8 +19,8 @@
 
     function NewPageController($routeParams, $location, PageService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
 
         vm.addNewPage = addNewPage;
 
@@ -40,9 +40,9 @@
 
     function EditPageController($routeParams, $location, PageService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
-        vm.pageId = parseInt($routeParams['pid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageId = $routeParams['pid'];
         vm.deleteThePage = deleteThePage;
         vm.updateThePage = updateThePage;
 

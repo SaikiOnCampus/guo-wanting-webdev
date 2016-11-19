@@ -8,9 +8,9 @@
 
     function WidgetListController($routeParams, WidgetService, $sce) {
         var vm = this;
-        vm.pageId = parseInt($routeParams['pid']);
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
+        vm.pageId = $routeParams['pid'];
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
         vm.checkSafeHTML = checkSafeHTML;
         vm.checkSafeYOUTUBE = checkSafeYOUTUBE;
         vm.checkSafeIMAGE = checkSafeIMAGE;
@@ -43,15 +43,15 @@
 
     function NewWidgetController($routeParams, $location, WidgetService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
-        vm.pageId = parseInt($routeParams['pid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageId = $routeParams['pid'];
         vm.toCreateNewWidget = toCreateNewWidget;
 
         // Todo: how to implement more properly
         function toCreateNewWidget(type) {
             var aWidget = {
-                widgetType: type
+                type: type
             };
             WidgetService.createWidget(vm.pageId, aWidget).success(function (widget) {
                 aWidget = widget;
@@ -62,10 +62,10 @@
 
     function EditWidgetController($routeParams, $location, WidgetService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
-        vm.pageId = parseInt($routeParams['pid']);
-        vm.widgetId = parseInt($routeParams['wgid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageId = $routeParams['pid'];
+        vm.widgetId = $routeParams['wgid'];
         vm.deleteTheWidget = deleteTheWidget;
         vm.updateTheWidget = updateTheWidget;
 
@@ -93,10 +93,10 @@
 
     function FlickrImageSearchController($routeParams, $location, FlickrService, WidgetService) {
         var vm = this;
-        vm.userId = parseInt($routeParams['uid']);
-        vm.websiteId = parseInt($routeParams['wid']);
-        vm.pageId = parseInt($routeParams['pid']);
-        vm.widgetId = parseInt($routeParams['wgid']);
+        vm.userId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageId = $routeParams['pid'];
+        vm.widgetId = $routeParams['wgid'];
 
         vm.searchPhotos = searchPhotos;
         vm.selectPhoto = selectPhoto;

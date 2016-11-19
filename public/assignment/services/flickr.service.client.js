@@ -16,7 +16,6 @@
             var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +
                 "&format=json&api_key=API_KEY&text=TEXT";
 
-            console.log("aaa");
             var url = urlBase.replace("API_KEY", key).replace("TEXT", searchTerm);
             return $http.get(url);
         }

@@ -9,14 +9,19 @@
         vm.login = login;
         function login(user) {
             var promise = UserService.findUserByCredentials(user.username, user.password);
-            promise.success(function (user) {
-                if (user != '0') {
-                    $location.url("/user/" + user._id);
-                } else {
-                    vm.alert = "Unable to locate your credentials!";
-                }
-            });
-
+            promise
+                .success(
+                function (user) {
+                    console.log(user);
+                    if (user != '0') {
+                        $location.url("/user/" + user._id);
+                    } else {
+                        vm.alert = "Unable to locate your credentials!"
+                    }
+                })
+                .error(function (error) {
+                    vm.alert = "Error!"
+                });
         }
     }
     
@@ -30,7 +35,8 @@
                 return;
             }
             UserService.findUserByUserName(vm.user.username).success(function (user) {
-                if (user != '0') {
+                if (user) {
+                    console.log(user);
                     vm.alert = "This username has been used!";
                 } else {
                     UserService.createUser(vm.user).success(function (user) {
@@ -47,7 +53,7 @@
     
     function ProfileController($routeParams, UserService) {
         var vm = this;
-        var userId = parseInt($routeParams.uid);
+        var userId = $routeParams.uid;
         function init() {
             var promise = UserService.findUserById(userId);
             promise.success(function (user) {
@@ -61,10 +67,10 @@
         vm.updateProfile = updateProfile;
 
         function updateProfile() {
-            UserService.updateUser(userId, vm.user).success(function (user) {
-                if (user != '0') {
-                    vm.user = user;
-                }
+            UserService.updateUser(userId, vm.user).success(function (status) {
+                // if (user != '0') {
+                //     vm.user = user;
+                // }
             })
         }
     }

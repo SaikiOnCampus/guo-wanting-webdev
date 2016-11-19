@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, model) {
     var widgets = [
         { _id: 123, widgetType: "HEADER", pageId: 321, size: 2, text: "GIZMODO", canUpdate: true},
         { _id: 234, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum", canUpdate: true},
@@ -33,8 +33,9 @@ module.exports = function (app) {
     }
 
     function uploadImage(req, res) {
-        var userId = JSON.parse(req.body.userId);
-        var websiteId = JSON.parse(req.body.websiteId);
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = req.body.pageId;
         var widget = JSON.parse(req.body.photo);
         var myFile = req.file;
 
@@ -59,85 +60,135 @@ module.exports = function (app) {
 
         var newwidget = {
             _id : widget._id,
-            widgetType: widget.widgetType,
-            pageId: widget.pageId,
+            type: widget.type,
+            _page: pageId,
             width: widget.width,
-            url: "/uploads" + photoname,
-            canUpdate: true
+            url: "/uploads" + photoname
         };
 
-        console.log(newwidget.widgetType);
 
-        var indexOfOrigin = -1;
-        for (var i = 0; i < widgets.length; i++) {
-            if (widgets[i]._id == newwidget._id) {
-                indexOfOrigin = i;
-                widgets[i] = newwidget;
-                break;
+        model.widgetModel.updateWidget(widget._id, newwidget).then(
+            function (status) {
+                res.redirect("/assignment/index.html#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widget._id)
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
             }
-        }
-        if (indexOfOrigin === -1) {
-            widgets.push(newwidget);
-        }
+        );
+        // var indexOfOrigin = -1;
+        // for (var i = 0; i < widgets.length; i++) {
+        //     if (widgets[i]._id == newwidget._id) {
+        //         indexOfOrigin = i;
+        //         widgets[i] = newwidget;
+        //         break;
+        //     }
+        // }
+        // if (indexOfOrigin === -1) {
+        //     widgets.push(newwidget);
+        // }
 
-        res.redirect("/assignment/index.html#/user/" + userId + "/website/" + websiteId + "/page/" + newwidget.pageId + "/widget/" + widget._id)
 
     }
 
     function createWidget(req, res) {
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         var widget = req.body;
-        widget._id = (new Date()).getTime();
-        widget.pageId = pageId;
-        widgets.push(widget);
-        res.send(widget);
+        model.widgetModel.createWidget(pageId, widget).then(
+            function (widget) {
+                res.send(widget);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
+            }
+        );
+        // widget._id = (new Date()).getTime();
+        // widget.pageId = pageId;
+        // widgets.push(widget);
+        // res.send(widget);
     }
 
     function findAllWidgetsForPage(req, res) {
-        var pageId = parseInt(req.params.pageId);
-        var pageWidgets = [];
-        for (var w in widgets) {
-            if (widgets[w].pageId === pageId) {
-                pageWidgets.push(widgets[w]);
+        var pageId = req.params.pageId;
+        model.widgetModel.findAllWidgetsForPage(pageId).then(
+            function (widgets) {
+                res.json(widgets);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
             }
-        }
-        res.send(pageWidgets);
+        );
+        // var pageWidgets = [];
+        // for (var w in widgets) {
+        //     if (widgets[w].pageId === pageId) {
+        //         pageWidgets.push(widgets[w]);
+        //     }
+        // }
+        // res.send(pageWidgets);
     }
 
     function findWidgetById(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
-        for (var w in widgets) {
-            if (widgets[w]._id === widgetId) {
-                res.send(widgets[w]);
-                return;
+        var widgetId = req.params.widgetId;
+        model.widgetModel.findWidgetById(widgetId).then(
+            function (widget) {
+                if (widget) {
+                    res.send(widget);
+                } else {
+                    res.send('0');
+                }
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
             }
-        }
-        return '0';
+        );
+        // for (var w in widgets) {
+        //     if (widgets[w]._id === widgetId) {
+        //         res.send(widgets[w]);
+        //         return;
+        //     }
+        // }
+        // return '0';
     }
 
     function updateWidget(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
+        var widgetId = req.params.widgetId;
         var widget = req.body;
-        for (var w in widgets) {
-            if (widgets[w]._id === widgetId) {
-                widgets[w] = widget;
-                res.send(widgets[w]);
-                return;
+        model.widgetModel.updateWidget(widgetId, widget).then(
+            function (status) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
             }
-        }
-        return '0';
+        );
+        // var widget = req.body;
+        // for (var w in widgets) {
+        //     if (widgets[w]._id === widgetId) {
+        //         widgets[w] = widget;
+        //         res.send(widgets[w]);
+        //         return;
+        //     }
+        // }
+        // return '0';
     }
 
     function deleteWidget(req, res) {
-        var widgetId = parseInt(req.params.widgetId);
-        for (var w in widgets) {
-            if (widgets[w]._id === widgetId) {
-                widgets.splice(w, 1);
-                res.send(200);
-                return;
+        var widgetId = req.params.widgetId;
+        model.widgetModel.deleteWidget(widgetId).then(
+            function (status) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
             }
-        }
-        return '0';
+        );
+        // for (var w in widgets) {
+        //     if (widgets[w]._id === widgetId) {
+        //         widgets.splice(w, 1);
+        //         res.send(200);
+        //         return;
+        //     }
+        // }
+        // return '0';
     }
 
 };
