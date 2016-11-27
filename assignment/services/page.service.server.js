@@ -16,8 +16,8 @@ module.exports = function (app, model) {
         var websiteId = req.params.websiteId;
         var page = req.body;
         model.pageModel.createPage(websiteId, page).then(
-            function (newpage) {
-                res.send(page);
+            function (websiteObj) {
+                res.send(websiteObj);
             },
             function (error) {
                 res.sendStatus(400).send(error);
@@ -32,8 +32,8 @@ module.exports = function (app, model) {
     function findAllPagesForWebsite(req, res) {
         var websiteId = req.params.websiteId;
         model.pageModel.findAllPagesForWebsite(websiteId).then(
-            function (websites) {
-                res.send(websites);
+            function (website) {
+                res.send(website.pages);
             },
             function (error) {
                 res.sendStatus(400).send(error);

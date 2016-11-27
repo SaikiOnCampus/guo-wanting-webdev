@@ -53,9 +53,9 @@
             var aWidget = {
                 type: type
             };
-            WidgetService.createWidget(vm.pageId, aWidget).success(function (widget) {
-                aWidget = widget;
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + aWidget._id);
+            WidgetService.createWidget(vm.pageId, aWidget).success(function (pageObj) {
+                aWidget = pageObj.widgets[pageObj.widgets.length - 1];
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + aWidget);
             });
         }
     }

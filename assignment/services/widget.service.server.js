@@ -94,8 +94,8 @@ module.exports = function (app, model) {
         var pageId = req.params.pageId;
         var widget = req.body;
         model.widgetModel.createWidget(pageId, widget).then(
-            function (widget) {
-                res.send(widget);
+            function (pageObj) {
+                res.send(pageObj);
             },
             function (error) {
                 res.sendStatus(400).send(error);
@@ -110,8 +110,8 @@ module.exports = function (app, model) {
     function findAllWidgetsForPage(req, res) {
         var pageId = req.params.pageId;
         model.widgetModel.findAllWidgetsForPage(pageId).then(
-            function (widgets) {
-                res.json(widgets);
+            function (pageObj) {
+                res.json(pageObj.widgets);
             },
             function (error) {
                 res.sendStatus(400).send(error);

@@ -18,6 +18,11 @@ module.exports = function() {
         widgetModel: WidgetModel
     }
 
+    UserModel.setModel(model);
+    WebsiteModel.setModel(model);
+    PageModel.setModel(model);
+    WidgetModel.setModel(model);
+
     return model;
 
 };

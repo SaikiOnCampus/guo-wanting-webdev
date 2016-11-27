@@ -1,28 +1,39 @@
 module.exports = function (mongoose) {
+    var model = {};
     var userSchema = require('./user.schema.server')(mongoose);
     var UserModel = mongoose.model("UserModel", userSchema);
 
     var api = {
         createUser: createUser,
-        populateWebsites: populateUserWebsites,
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
-        deleteUser: deleteUser
-    }
+        deleteUser: deleteUser,
+        setModel: setModel,
+        findWebsitesForUser: findWebsitesForUser
+    };
     return api;
+
+    function setModel(_model) {
+        model = _model;
+    }
 
     function createUser(user) {
         return UserModel.create(user);
     }
 
-    function populateUserWebsites(userId) {
-        return UserModel.findById(userId).populate('websites');
-    }
 
     function findUserById(userId) {
         return UserModel.findById(userId);
+    }
+
+    function findWebsitesForUser(userId) {
+        UserModel.findById(userId).then(function (user) {
+            return user.websites;
+        }, function (error) {
+            console.log(error)
+        })
     }
 
     function findUserByUsername(username) {
@@ -31,7 +42,7 @@ module.exports = function (mongoose) {
 
     function findUserByCredentials(username, password) {
         console.log("aaaa");
-        return UserModel.find({username: username, password: password});
+        return UserModel.findOne({username: username, password: password});
     }
 
     function updateUser(userId, user) {

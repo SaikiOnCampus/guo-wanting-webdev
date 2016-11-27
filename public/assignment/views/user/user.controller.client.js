@@ -8,7 +8,8 @@
         var vm = this;
         vm.login = login;
         function login(user) {
-            var promise = UserService.findUserByCredentials(user.username, user.password);
+            // var promise = UserService.findUserByCredentials(user.username, user.password);
+            var promise = UserService.login(user.username, user.password);
             promise
                 .success(
                 function (user) {
@@ -51,7 +52,7 @@
 
     }
     
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($routeParams, UserService, $location) {
         var vm = this;
         var userId = $routeParams.uid;
         function init() {
@@ -72,6 +73,20 @@
                 //     vm.user = user;
                 // }
             })
+        }
+        
+        vm.logout = logout;
+        
+        function logout() {
+            UserService.logout()
+                .success(function(){
+                    $location.url("/login");
+                });
+
+            // UserService.logout().success(function (status) {
+            //     console.log("logged out!")
+            //     $location.url('/login');
+            // })
         }
     }
     

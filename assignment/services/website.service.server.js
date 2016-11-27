@@ -20,20 +20,16 @@ module.exports = function (app, model) {
         // website._id = (new Date()).getTime();
         // website.developerId = userId;
         // websites.push(website);
-        model.websiteModel.createWebsiteForUser(userId, website).then(
-            function (newwebsite) {
-                model.userModel.populateWebsites(userId).then(
-                    function (doc) {
-                        console.log(doc);
-                    }
-                );
-                res.send(newwebsite);
-            },
-            function (error) {
-                res.sendStatus(400).send(error);
-            }
-        );
-        //
+        model.websiteModel.createWebsiteForUser(userId, website)
+            .then(
+                function (userObj) {
+                    res.send(userObj);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
+
         // res.send(website);
 
     }
@@ -41,8 +37,8 @@ module.exports = function (app, model) {
     function findAllWebsitesForUser(req, res) {
         var userId = req.params.userId;
         model.websiteModel.findAllWebsitesForUser(userId).then(
-            function (websites) {
-                res.json(websites);
+            function (user) {
+                res.json(user.websites);
             },
             function (error) {
                 res.sendStatus(400).send(error);

@@ -1,4 +1,5 @@
 module.exports = function (mongoose) {
+    var model = {};
     var pageSchema = require('./page.schema.server')(mongoose);
     var PageModel = mongoose.model('PageModel', pageSchema);
 
@@ -7,18 +8,39 @@ module.exports = function (mongoose) {
         findAllPagesForWebsite: findAllPagesForWebsite,
         findPageById: findPageById,
         updatePage: updatePage,
-        deletePage: deletePage
+        deletePage: deletePage,
+        setModel: setModel
     };
 
     return api;
 
+    function setModel(_model) {
+        model = _model;
+    }
+
     function createPage(websiteId, page) {
-        page._website = websiteId;
-        return PageModel.create(page);
+
+        return PageModel.create(page).then(function (pageObj) {
+            return model.websiteModel.findWebsiteById(websiteId)
+                .then(
+                    function (websiteObj) {
+                        pageObj._website = websiteId;
+                        pageObj.save();
+                        websiteObj.pages.push(pageObj);
+                        return websiteObj.save()
+                    },
+                    function (error) {
+                        console.log(error)
+                    }
+                )
+        })
     }
 
     function findAllPagesForWebsite(websiteId) {
-        return PageModel.find({_website: websiteId});
+        return model.websiteModel.findWebsiteById(websiteId)
+            .populate("pages")
+            .exec();
+        // return PageModel.find({_website: websiteId});
     }
 
     function findPageById(pageId) {
