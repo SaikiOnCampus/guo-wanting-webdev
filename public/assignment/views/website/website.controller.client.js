@@ -28,6 +28,10 @@
         init();
 
         function addNewWebsite() {
+            if (!vm.website || !vm.website.name) {
+                vm.alert = "Please type in the website name.";
+                return;
+            }
             WebsiteService.createWebsite(vm.userId, vm.website).success(function (website) {
                 $location.url("/user/" + vm.userId + "/website");
             });
@@ -55,6 +59,10 @@
         init();
 
         function updateWebsite(website) {
+            if (!website || !website.name) {
+                vm.alert = "Name could not be empty.";
+                return;
+            }
             WebsiteService.updateWebsite(vm.websiteId, website).success(function (website) {
                 if (website != '0') {
                     $location.url("/user/" + vm.userId + "/website");

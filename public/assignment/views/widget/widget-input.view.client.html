@@ -1,4 +1,7 @@
 <div>
+    <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
+    Name
+    <input ng-model="model.widget.name" class="form-control"/>
     Text
     <input ng-model="widget.text" class="form-control"/>
     Rows

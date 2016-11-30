@@ -24,6 +24,7 @@
 <!--<div>-->
     <!--<form id="widget-form">-->
         <div class="form-group">
+            <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
             <label for="widget-heading-name">Name</label>
             <input ng-model="model.widget.name" id="widget-heading-name"
                    type="text"

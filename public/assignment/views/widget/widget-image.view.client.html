@@ -5,6 +5,7 @@
         <input name="widget" value="{{model.widget}}" style="display: none"/>
 
         <div class="form-group">
+            <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
             <label for="widget-image-name">Name</label>
             <input ng-model="model.widget.name" id="widget-image-name"
                    type="text"

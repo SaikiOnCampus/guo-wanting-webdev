@@ -32,6 +32,10 @@
         init();
 
         function addNewPage() {
+            if (!vm.page || !vm.page.name) {
+                vm.alert = "The name filed could not be empty.";
+                return;
+            }
             PageService.createPage(vm.websiteId, vm.page).success(function (page) {
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page")
             });
@@ -64,6 +68,10 @@
         }
 
         function updateThePage(page) {
+            if (!page || !page.name) {
+                vm.alert = "The name field could not be empty."
+                return;
+            }
             PageService.updatePage(vm.pageId, page).success(function (page) {
                 if (page != '0') {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");

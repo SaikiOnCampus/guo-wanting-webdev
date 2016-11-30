@@ -8,7 +8,14 @@
         var vm = this;
         vm.login = login;
         function login(user) {
-            // var promise = UserService.findUserByCredentials(user.username, user.password);
+            if (!user || !user.username) {
+                vm.alert = "Please enter your username.";
+                return;
+            }
+            if (!user.password) {
+                vm.alert = "Please enter your password.";
+                return;
+            }
             var promise = UserService.login(user.username, user.password);
             promise
                 .success(
@@ -21,7 +28,7 @@
                     }
                 })
                 .error(function (error) {
-                    vm.alert = "Error!"
+                    vm.alert = "Sorry, please try again."
                 });
         }
     }

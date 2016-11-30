@@ -40,6 +40,7 @@
 <div class="col-md-8 col-sm-8 session-divider">
     <form id="new-page-form">
         <div class="form-group">
+            <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
             <label for="page-name">Name</label>
             <input ng-model="model.page.name" id="page-name"
                    type="text"

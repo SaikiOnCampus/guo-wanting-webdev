@@ -39,6 +39,7 @@
 <div class="col-md-8 col-sm-8 session-divider">
     <form id="new-website-form">
         <div class="form-group">
+            <div ng-show="model.alert" class="alert alert-danger" role="alert">{{model.alert}}</div>
             <label for="website-name">Name</label>
             <input ng-model="model.website.name" id="website-name"
                    type="text"

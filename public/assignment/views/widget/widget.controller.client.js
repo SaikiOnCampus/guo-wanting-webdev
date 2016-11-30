@@ -51,6 +51,7 @@
         // Todo: how to implement more properly
         function toCreateNewWidget(type) {
             var aWidget = {
+                name: "new widget",
                 type: type
             };
             WidgetService.createWidget(vm.pageId, aWidget).success(function (pageObj) {
@@ -83,6 +84,10 @@
         }
 
         function updateTheWidget(widget) {
+            if (!widget || !widget.name) {
+                vm.alert = "The name field could not be empty.";
+                return;
+            }
             WidgetService.updateWidget(vm.widgetId, widget).success(function (widget) {
                 if (widget != '0') {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
@@ -118,6 +123,7 @@
             console.log(vm.widgetId);
             WidgetService.findWidgetById(vm.widgetId).success(function (widget) {
                 widget.url = url;
+                widget.name = "new photo"
                 WidgetService.updateWidget(vm.widgetId, widget).success(function (widget) {
                     if (widget != '0') {
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
