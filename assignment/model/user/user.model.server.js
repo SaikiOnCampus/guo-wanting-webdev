@@ -37,7 +37,7 @@ module.exports = function (mongoose) {
     }
 
     function findUserByUsername(username) {
-        return UserModel.find({username: username});
+        return UserModel.findOne({username: username});
     }
 
     function findUserByCredentials(username, password) {

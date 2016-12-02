@@ -13,6 +13,8 @@ module.exports = function (app, model) {
     var cookieParser = require('cookie-parser');
     var session = require('express-session');
 
+    var bcrypt = require("bcrypt-nodejs");
+
     app.use(session({
         secret: 'hello world',
         resave: true,
@@ -56,17 +58,22 @@ module.exports = function (app, model) {
 
 
     function localStrategy(username, password, done) {
+        console.log("I am in assignment local strategy")
         model.userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
-                    if(!user) {
-                        return done(null, false);
-                    } else {
+                    console.log(user);
+                    if(user && bcrypt.compareSync(password, user.password)) {
+                        console.log("I am comparesync")
                         return done(null, user);
+                    } else {
+                        console.log("I dont compare")
+                        return done(null, false);
                     }
                 },
                 function(err) {
+                    console.log("error: " + err)
                     if (err) { return done(err); }
                 }
             );
@@ -90,8 +97,11 @@ module.exports = function (app, model) {
 
     function createUser(req, res) {
         var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
         model.userModel.createUser(user).then(
             function (newuser) {
+                console.log("new user")
+                console.log(newuser)
                 req.login(newuser, function (err) {
                     if (err) {
                         res.sendStatus(400);

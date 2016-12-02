@@ -43,7 +43,7 @@
                 return;
             }
             UserService.findUserByUserName(vm.user.username).success(function (user) {
-                if (user) {
+                if (user != '0') {
                     console.log(user);
                     vm.alert = "This username has been used!";
                 } else {
