@@ -51,7 +51,7 @@
             placeholder="verify password"
             class="form-control"/>
     <label ng-show="model.isLoggedIn() && model.currentUser.isAdmin">Is Admin?</label>
-    <input ng-show="model.isLoggedIn() && model.currentUser.isAdmin"
+    <input ng-hide="model.isLoggedIn() && model.currentUser.isAdmin"
            ng-model="model.user.isAdmin" type="checkbox"/>
     <a class="btn btn-primary btn-block"
        ng-click="model.register(model.user)">Register</a>
