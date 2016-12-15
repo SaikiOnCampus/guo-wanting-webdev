@@ -1,0 +1,182 @@
+
+
+input.form-control {
+    margin-bottom: 5px;
+}
+
+.banner {
+    background-color: transparent;
+    background-image: url('../../project/resource/banner2.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+
+}
+
+.jumbotron-heading {
+    margin-top: 0px;
+}
+
+
+/*.jumbotron p:last-child {*/
+    /*margin-bottom: 0;*/
+/*}*/
+
+/*.jumbotron .container {*/
+    /*max-width: 40rem;*/
+/*}*/
+
+.banner-large-margin-bottom {
+    
+    margin-bottom: 50px;
+}
+
+.album {
+    min-height: 50rem; /* Can be removed; just added for demo purposes */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #f7f7f7;
+}
+
+.card {
+    float: left;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    background-color: #fff;
+    border-radius: 1.25rem;
+
+}
+
+.card > img {
+    margin-bottom: .75rem;
+    padding: 0;
+}
+
+.card-text {
+    font-size: 85%;
+    text-align: justify;
+}
+
+.page-header {
+    color: grey;
+    padding-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+
+.my_panel > .panel-body {
+    padding: 0px;
+}
+.my_panel > .panel-body > img {
+    width: 100%;
+    height: 100%;
+}
+.my_panel > .panel-footer {
+    text-align: center;
+}
+
+
+#content {
+    display: table;
+}
+
+#left-col {
+    float: none;
+    display: table-cell;
+    height:100%;
+    vertical-align: top;
+}
+
+#right-col {
+    float: none;
+    display: table-cell;
+    height: 100%;
+    vertical-align: top;
+}
+
+.ta-editor.ta-html, .ta-scroll-window.form-control {
+    min-height: 100px;
+}
+
+.ta-scroll-window > .ta-bind  {
+    min-height: 100px;
+}
+
+/*favorites*/
+
+#readinglist {
+    border: #b5b8b3 solid;
+    border-radius: 0.75em;
+}
+
+.grid {
+    float: none;
+    /*margin: 15px auto;*/
+    /*width:526px;*/
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 100%;
+}
+.grid_block {
+    margin: 5px;
+    width: 100%;
+    height: 250px;
+    max-width: 250px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background: #f8d55c;
+    text-align: center;
+}
+.grid_block > img {
+    transition: all ease 0.5s;
+}
+.grid_block:hover > img {
+    transform: scale(0.95);
+}
+.grid_block .txt {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #f8d55c;
+    text-align: center;
+    padding: 10px;
+    bottom: -100%;
+    transition: all ease 0.5s;
+}
+.grid_block .txt h3 {
+    color: rgba(0,0,0,0.8);
+    font: 800 18px/20px open sans;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+.grid_block .txt p {
+    margin: 0;
+    padding: 0;
+    font: 13px/16px open sans;
+    color: rgba(0,0,0,0.8);
+}
+.grid_block:hover .txt {
+    bottom: 0;
+}
+.title {
+    color: #4f738f;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font: 800 30px/36px open sans;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.description {
+    color: #666;
+    font: 15px/18px open sans;
+}
+
+/*favorites*/
+

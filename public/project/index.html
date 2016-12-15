@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="BookedRead">
 <head>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="views/home-page.controller.client.js"></script>
+    <script src="views/user/user.controller.client.js"></script>
+    <script src="views/book/search.controller.client.js"></script>
+    <script src="views/user/favorite.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/book.service.client.js"></script>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/vader/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel='stylesheet' href='css/textAngular.css'>
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/comment.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+    <script src='./js/textAngular-rangy.min.js'></script>
+    <script src='./js/textAngular-sanitize.min.js'></script>
+    <script src='./js/textAngular.min.js'></script>
+
+    <title>BookedRead</title>
 </head>
 <body>
-    <h1>Project Home Page</h1>
+<!--<h1>Assignment Home Page</h1>-->
+<div ng-view></div>
+
+
 </body>
 </html>

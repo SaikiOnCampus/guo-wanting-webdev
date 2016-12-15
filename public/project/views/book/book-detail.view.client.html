@@ -1,0 +1,141 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">BookedRead</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/search">Search</a></li>
+            </ul>
+            <ul ng-show="model.isLoggedIn()" class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">{{model.currentUser.username}}</li>
+                        <li><a href="#/user/{{model.currentUser._id}}">Profile</a></li>
+                        <li><a ng-click="model.logout()">Logout</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#/favorites">Favorites</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul ng-hide="model.isLoggedIn()" class="nav navbar-nav navbar-right">
+                <li><a href="#/register">Register</a></li>
+                <li><a href="#/login">Log in</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div id="mainContainer" class="container">
+    <div class="panel panel-default" style="height: 100%; ">
+        <div class="panel-body" style="height: 100%">
+            <div id="content" class="row" style="height: 100%">
+                <div id="left-col" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="panel panel-default my_panel" style="height: inherit">
+
+                        <div class="panel-body">
+                            <img ng-src="{{model.authorImage}}" class="img-responsive center-block"/>
+                        </div>
+                        <div class="panel-footer" style="background-color: white">
+                            <h3>The Writer</h3>
+                            <p>{{model.authorDetail}}</p>
+                            <!--<a href="#">Read More</a>-->
+                        </div>
+                    </div>
+                </div>
+                <!--class="col-lg-9 col-md-8 col-sm-9 col-xs-7"-->
+                <div id="right-col" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <!--padding-bottom: 10px-->
+                    <div style="height: 100%;">
+                        <div class="panel panel-default" style="height: 100%; position: relative">
+                            <!--<div class="panel-body">-->
+                            <!--<img src="http://placehold.it/150x150" alt="" class="img-responsive center-block" />-->
+                            <!--</div>-->
+                            <div class="panel-footer" style="height: inherit; padding-bottom: 250px">
+                                <div class="container-fluid"
+                                     style="margin: 0.75%; margin-bottom: 1.5%; padding: 2.5%; background-color: white; border-radius: 0.75em">
+                                    <div class="col-sm-5 " style="text-align: center">
+                                        <img class="img-responsive" style="display: initial" ng-src="{{model.bookImage}}"/>
+                                    </div>
+                                    <div class="col-sm-7" style="text-align: center">
+                                        <h4 style="border-bottom: #fbfff9; margin-bottom: 2em">{{model.book.volumeInfo.title}}</h4>
+                                        <a ng-hide="model.isSaved" ng-click="model.saveToReadingList()" class="btn btn-success">Save</a>
+                                        <a ng-show="model.isSaved" ng-click="model.deleteFromReadingList()" class="btn btn-success">Saved</a>
+                                    </div>
+                                </div>
+
+                                <div class="container-fluid"
+                                     style="background-color: white; margin: 0.75%; border-radius: 0.75em">
+                                    <h5 style="padding-top: 0.75%; padding-bottom: 0.75%">Description: </h5>
+                                    <p>{{model.book.volumeInfo.description}}</p>
+                                </div>
+
+                                <!--<a href="#">Read More</a>-->
+
+                                <!--style="position: absolute; bottom: 2.5%; left: 2.5%; right: 2.5%"-->
+                                <div ng-if="model.isLoggedIn()" style="position: absolute; bottom: 2.5%; left: 2.5%; right: 2.5%">
+
+                                    <div ng-model="model.userreview"
+                                         text-angular ta-toolbar=
+                                                 "[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                       ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                       ['indent','outdent'],['html']]">
+                                    </div>
+                                    <br>
+                                    <a ng-click="model.submitReview()" class="btn btn-success btn-block">Submit</a>
+                                    <!--<textarea rows="5" class="form-control" type="text"-->
+                                              <!--placeholder="Write your comment"></textarea>-->
+                                    <!--<br>-->
+                                    <!--<a class="btn btn-success btn-block"-->
+                                       <!--href="#">Submit</a>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="grey-bg">
+<div class="container bootstrap snippet grey-bg">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="blog-comment">
+                <h3 class="text-success">Reviews</h3>
+                <hr/>
+                <ul ng-if="model.reviews" class="comments" ng-repeat="review in model.reviews">
+                    <li class="clearfix">
+                        <img src="../../../project/resource/usericon1.jpeg" class="avatar" alt="">
+                        <div class="post-comments">
+                            <p class="meta"> {{review.dateCreated}} <a href="#"> {{review._reader.username}} </a>
+                                says :
+                                <a ng-show="model.currentUser.isAdmin" class="pull-right" ng-click="model.deleteReview(review)">delete</a>
+                            </p>
+                             <div ng-bind-html="model.checkSafeHTML(review.content)"></div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+

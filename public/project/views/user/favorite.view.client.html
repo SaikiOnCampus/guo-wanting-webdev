@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">BookedRead</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/search">Search</a></li>
+            </ul>
+            <ul ng-show="model.isLoggedIn()" class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">{{model.currentUser.username}}</li>
+                        <li><a href="#/user/{{model.currentUser._id}}">Profile</a></li>
+                        <li><a ng-click="model.logout()">Logout</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#/favorites">Favorites</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul ng-hide="model.isLoggedIn()" class="nav navbar-nav navbar-right">
+                <li><a href="#/register">Register</a></li>
+                <li><a href="#/login">Log in</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+<h3 class="text-success">Favorites</h3>
+<hr/>
+</div>
+
+<div id="readinglist" class="container">
+    <div ng-show="model.isEmpty">
+        <h2> You haven't saved any yet... </h2>
+    </div>
+    <div class="grid">
+        <a class="grid_block" ng-repeat="book in model.readingList">
+            <img ng-src="{{model.checkSafeIMAGE(book.cover)}}" alt=""/>
+            <div class="txt">
+                <h3>{{book.name}}
+                    <div style="vertical-align: middle; margin: 1px">
+                        <span class="glyphicon glyphicon-remove" ng-click="model.removeFromList(book)"></span>
+                    </div>
+                </h3>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".grid .grid_block:nth-child(2n)").filter(function () {
+            return $(this).css("display") != "none";
+        }).after("<div class='clear'></div>");
+    });
+</script>
+
