@@ -67,7 +67,7 @@
             <div class="row">
                 <div ng-repeat="book in model.books">
                 <div class="card">
-                    <img ng-click="model.selectBook(book)" style="height: 15em" class="img-responsive center-block" ng-src="{{model.checkSafeIMAGE(book.volumeInfo.imageLinks.smallThumbnail)}}" alt="Card image cap">
+                    <img ng-click="model.selectBook(book)" class="img-responsive center-block fix-height" ng-src="{{model.checkSafeIMAGE(book.volumeInfo.imageLinks.smallThumbnail)}}" alt="Card image cap">
                     <!--<p class="card-text">{{book.volumeInfo.title}}</p>-->
                 </div>
                 </div>

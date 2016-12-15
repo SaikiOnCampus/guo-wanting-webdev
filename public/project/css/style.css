@@ -178,5 +178,65 @@ input.form-control {
     font: 15px/18px open sans;
 }
 
-/*favorites*/
+.center-texting {
+    text-align: center
+}
+
+.margin-top-50 {
+    margin-top: 50px
+}
+
+.height-100perct {
+    height: 100%;
+}
+
+.height-inherit {
+    height: inherit;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.relative-100-height {
+    height: 100%;
+    position: relative
+}
+
+.large-padding-inherit-height {
+    height: inherit;
+    padding-bottom: 250px
+}
+
+.fixer {
+    margin: 0.75%; margin-bottom: 1.5%; padding: 2.5%; background-color: white; border-radius: 0.75em
+}
+
+.initial-display {
+    display: initial
+}
+
+.h4-fixeer {
+    border-bottom: #fbfff9; margin-bottom: 2em
+}
+
+.minor-fixer {
+    background-color: white; margin: 0.75%; border-radius: 0.75em
+}
+
+.padding-top-bottom {
+    padding-top: 0.75%; padding-bottom: 0.75%"
+}
+
+.textarea-fixer {
+    position: absolute; bottom: 2.5%; left: 2.5%; right: 2.5%
+}
+
+.fix-height {
+    height: 15em
+}
+
+.span-fixer {
+    vertical-align: middle; margin: 1px
+}
 

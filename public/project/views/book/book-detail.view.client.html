@@ -39,16 +39,16 @@
 </nav>
 
 <div id="mainContainer" class="container">
-    <div class="panel panel-default" style="height: 100%; ">
-        <div class="panel-body" style="height: 100%">
-            <div id="content" class="row" style="height: 100%">
+    <div class="panel panel-default height-100perct">
+        <div class="panel-body height-100perct">
+            <div id="content" class="row height-100perct ">
                 <div id="left-col" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div class="panel panel-default my_panel" style="height: inherit">
+                    <div class="panel panel-default my_panel height-inherit">
 
                         <div class="panel-body">
                             <img ng-src="{{model.authorImage}}" class="img-responsive center-block"/>
                         </div>
-                        <div class="panel-footer" style="background-color: white">
+                        <div class="panel-footer white-bg">
                             <h3>The Writer</h3>
                             <p>{{model.authorDetail}}</p>
                             <!--<a href="#">Read More</a>-->
@@ -58,34 +58,29 @@
                 <!--class="col-lg-9 col-md-8 col-sm-9 col-xs-7"-->
                 <div id="right-col" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <!--padding-bottom: 10px-->
-                    <div style="height: 100%;">
-                        <div class="panel panel-default" style="height: 100%; position: relative">
+                    <div class="height-100perct">
+                        <div class="panel panel-default relative-100-height">
                             <!--<div class="panel-body">-->
                             <!--<img src="http://placehold.it/150x150" alt="" class="img-responsive center-block" />-->
                             <!--</div>-->
-                            <div class="panel-footer" style="height: inherit; padding-bottom: 250px">
-                                <div class="container-fluid"
-                                     style="margin: 0.75%; margin-bottom: 1.5%; padding: 2.5%; background-color: white; border-radius: 0.75em">
-                                    <div class="col-sm-5 " style="text-align: center">
-                                        <img class="img-responsive" style="display: initial" ng-src="{{model.bookImage}}"/>
+                            <div class="panel-footer large-padding-inherit-height">
+                                <div class="container-fluid fixer">
+                                    <div class="col-sm-5 center-texting">
+                                        <img class="img-responsive initial-display" ng-src="{{model.bookImage}}"/>
                                     </div>
-                                    <div class="col-sm-7" style="text-align: center">
-                                        <h4 style="border-bottom: #fbfff9; margin-bottom: 2em">{{model.book.volumeInfo.title}}</h4>
+                                    <div class="col-sm-7 center-texting">
+                                        <h4 class="h4-fixeer">{{model.book.volumeInfo.title}}</h4>
                                         <a ng-hide="model.isSaved" ng-click="model.saveToReadingList()" class="btn btn-success">Save</a>
                                         <a ng-show="model.isSaved" ng-click="model.deleteFromReadingList()" class="btn btn-success">Saved</a>
                                     </div>
                                 </div>
 
-                                <div class="container-fluid"
-                                     style="background-color: white; margin: 0.75%; border-radius: 0.75em">
-                                    <h5 style="padding-top: 0.75%; padding-bottom: 0.75%">Description: </h5>
+                                <div class="container-fluid minor-fixer">
+                                    <h5 class="padding-top-bottom">Description: </h5>
                                     <p>{{model.book.volumeInfo.description}}</p>
                                 </div>
 
-                                <!--<a href="#">Read More</a>-->
-
-                                <!--style="position: absolute; bottom: 2.5%; left: 2.5%; right: 2.5%"-->
-                                <div ng-if="model.isLoggedIn()" style="position: absolute; bottom: 2.5%; left: 2.5%; right: 2.5%">
+                                <div ng-if="model.isLoggedIn()" class="textarea-fixer">
 
                                     <div ng-model="model.userreview"
                                          text-angular ta-toolbar=
