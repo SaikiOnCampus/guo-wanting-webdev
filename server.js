@@ -12,7 +12,12 @@ app.use(express.static(__dirname + '/public'));
 // require ("./assignment/app.js")(app);
  require ("./project/app.js") (app);
 
-var ipaddress = "127.0.0.1";
-var port      = 3000;
+// var ipaddress = "127.0.0.1";
+// var port      = 3000;
+//
+// app.listen(port, ipaddress);
 
-app.listen(port, ipaddress);
+app.set('ipaddress', (process.env.IP));
+app.set('port', (process.env.PORT || 3000));
+
+app.listen(app.get('port'), app.get('ipaddress'));
