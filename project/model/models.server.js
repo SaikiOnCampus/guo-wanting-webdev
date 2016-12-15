@@ -4,8 +4,8 @@ module.exports = function() {
     var connectionStringLocal = 'mongodb://localhost/bookedread';
 
     var mongoose = require('mongoose');
-    // mongoose.connect(connectionString);
-    mongoose.connect(connectionStringLocal);
+    mongoose.connect(connectionString);
+    // mongoose.connect(connectionStringLocal);
 
     var ReaderModel = require("./user/user.model.server") (mongoose);
     var BookModel = require("./book/book.model.server") (mongoose);
